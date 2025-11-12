@@ -19,7 +19,7 @@ const Footer = () => {
 
           <div className="flex gap-4">
             <a 
-              href="https://github.com" 
+              href="https://github.com/jatinharkhani" 
               target="_blank" 
               rel="noopener noreferrer"
               className="w-10 h-10 rounded-full glass flex items-center justify-center hover-lift group"
@@ -27,7 +27,7 @@ const Footer = () => {
               <Github className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
             </a>
             <a 
-              href="https://linkedin.com" 
+              href="https://www.linkedin.com/in/jatin-harkhani/" 
               target="_blank" 
               rel="noopener noreferrer"
               className="w-10 h-10 rounded-full glass flex items-center justify-center hover-lift group"
@@ -35,7 +35,7 @@ const Footer = () => {
               <Linkedin className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
             </a>
             <a 
-              href="https://twitter.com" 
+              href="https://www.linkedin.com/in/jatin-harkhani/" 
               target="_blank" 
               rel="noopener noreferrer"
               className="w-10 h-10 rounded-full glass flex items-center justify-center hover-lift group"
@@ -43,7 +43,7 @@ const Footer = () => {
               <Twitter className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
             </a>
             <a 
-              href="mailto:hello@example.com"
+              href="mailto:harkhanijatin@gmail.com"
               className="w-10 h-10 rounded-full glass flex items-center justify-center hover-lift group"
             >
               <Mail className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />

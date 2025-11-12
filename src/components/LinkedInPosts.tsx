@@ -12,7 +12,7 @@ export const linkedinPosts = [
     likes: 234,
     comments: 45,
     shares: 12,
-    link: "https://linkedin.com",
+    link: "https://www.linkedin.com/in/jatin-harkhani/",
   },
   {
     id: 2,
@@ -21,7 +21,7 @@ export const linkedinPosts = [
     likes: 189,
     comments: 32,
     shares: 8,
-    link: "https://linkedin.com",
+    link: "https://www.linkedin.com/in/jatin-harkhani/",
   },
   {
     id: 3,
@@ -30,7 +30,7 @@ export const linkedinPosts = [
     likes: 312,
     comments: 67,
     shares: 23,
-    link: "https://linkedin.com",
+    link: "https://www.linkedin.com/in/jatin-harkhani/",
   },
   {
     id: 4,
@@ -39,7 +39,7 @@ export const linkedinPosts = [
     likes: 267,
     comments: 41,
     shares: 15,
-    link: "https://linkedin.com",
+    link: "https://www.linkedin.com/in/jatin-harkhani/",
   },
   {
     id: 5,
@@ -48,7 +48,7 @@ export const linkedinPosts = [
     likes: 421,
     comments: 89,
     shares: 34,
-    link: "https://linkedin.com",
+    link: "https://www.linkedin.com/in/jatin-harkhani/",
   },
 ];
 
@@ -154,7 +154,7 @@ const LinkedInPosts = () => {
           <Button 
             variant="outline"
             size="lg" 
-            onClick={() => window.open('https://linkedin.com', '_blank')}
+            onClick={() => window.open('https://www.linkedin.com/in/jatin-harkhani/', '_blank')}
           >
             <Linkedin className="w-5 h-5 mr-2" />
             Follow on LinkedIn

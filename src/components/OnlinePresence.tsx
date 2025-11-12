@@ -13,11 +13,11 @@ const socialPlatforms = [
   {
     name: "GitHub",
     icon: Github,
-    username: "@yourusername",
+    username: "@jatinharkhani",
     followers: "1.2K",
     metric: "Repositories",
     metricValue: "45",
-    link: "https://github.com",
+    link: "https://github.com/jatinharkhani",
     color: "text-foreground",
     stats: [
       { icon: Star, value: "2.3K", label: "Stars" },
@@ -27,25 +27,25 @@ const socialPlatforms = [
   {
     name: "LinkedIn",
     icon: Linkedin,
-    username: "@yourname",
-    followers: "3.5K",
+    username: "@jatinaharkhani",
+    followers: "4.2K",
     metric: "Connections",
     metricValue: "2.8K",
-    link: "https://linkedin.com",
+    link: "https://www.linkedin.com/in/jatin-harkhani/",
     color: "text-[#0077B5]",
     stats: [
-      { icon: Users, value: "3.5K", label: "Followers" },
+      { icon: Users, value: "4.2K", label: "Followers" },
       { icon: MessageCircle, value: "150+", label: "Posts" },
     ]
   },
   {
     name: "Twitter/X",
     icon: Twitter,
-    username: "@yourusername",
+    username: "@jatinharkhani",
     followers: "890",
     metric: "Tweets",
     metricValue: "234",
-    link: "https://twitter.com",
+    link: "https://twitter.com/harkhani_jatin",
     color: "text-foreground",
     stats: [
       { icon: Users, value: "890", label: "Followers" },
@@ -146,14 +146,18 @@ const OnlinePresence = () => {
               I'm always open to interesting conversations and collaboration opportunities
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
+              <a href="mailto:harkhanijatin@gmail.com">
               <Button size="lg" className="glow">
                 <Mail className="w-5 h-5 mr-2" />
                 Send Email
               </Button>
+              </a>
+              <a href="https://cal.com/jatinpatel/30min?overlayCalendar=true" target="_blank" rel="noopener noreferrer">
               <Button size="lg" variant="outline">
                 <Globe className="w-5 h-5 mr-2" />
                 Schedule Call
               </Button>
+              </a>
             </div>
           </Card>
         </motion.div>
