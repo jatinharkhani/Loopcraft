@@ -41,7 +41,7 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.8 }}
           >
-            <span className="gradient-text">Web Developer</span>
+            <span className="gradient-text">Jatin Harkhani</span>
           </motion.h1>
           
           <motion.p 
@@ -50,7 +50,7 @@ const Hero = () => {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5 }}
           >
-          I'm <span className="gradient-text font-semibold">Jatin Harkhani</span>, crafting exceptional digital experiences through elegant code and innovative design.
+          I'm <span className="gradient-text font-semibold">Web Developer</span>, crafting exceptional digital experiences through elegant code and innovative design.
           </motion.p>
           
           <motion.div 

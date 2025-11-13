@@ -50,7 +50,7 @@ const LinkedInPostsList = () => {
                       <Linkedin className="w-6 h-6 text-white" />
                     </div>
                     <div className="flex-1">
-                      <p className="font-semibold">Your Name</p>
+                      <p className="font-semibold">Jatin Harkhani</p>
                       <p className="text-sm text-muted-foreground">
                         {new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
                       </p>

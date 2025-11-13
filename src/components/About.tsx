@@ -48,7 +48,7 @@ const About = () => {
             className="space-y-6"
           >
             <div className="glass rounded-2xl p-8">
-              <h3 className="text-2xl font-bold mb-4">Hello, I'm Jatin Patel — MEAN/MERN Stack Developer</h3>
+              <h3 className="text-2xl font-bold mb-4">Hello, I'm <span className="gradient-text font-semibold">Jatin Harkhani</span> — MEAN/MERN Stack Developer</h3>
               <p className="text-muted-foreground mb-4">
                 With over 5 years of experience as a MEAN/MERN Stack Developer, I specialize in creating responsive, scalable, and user-friendly web applications using MongoDB, Express, Angular/React, Node.js, Next.js and Nest.js.
               </p>
@@ -74,7 +74,7 @@ const About = () => {
                 asChild
                 className="bg-gradient-primary text-primary-foreground border-0 hover:opacity-90">
                 <a
-                  href="https://drive.google.com/your-resume-link"
+                  href="https://drive.google.com/file/d/1vldVm1EjnQKzCZnwSet9p8denwaJND7s/view"
                   target="_blank"
                   rel="noopener noreferrer">
                   <Download className="mr-2" />
