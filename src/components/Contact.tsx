@@ -13,25 +13,63 @@ const Contact = () => {
     message: ""
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     // Basic validation
     if (!formData.name || !formData.email || !formData.message) {
       toast.error("Please fill in all fields");
       return;
     }
 
-    // Email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(formData.email)) {
       toast.error("Please enter a valid email address");
       return;
     }
 
-    // Here you would typically send the form data to a backend
-    toast.success("Message sent successfully! I'll get back to you soon.");
-    setFormData({ name: "", email: "", message: "" });
+    setLoading(true);
+
+    // HubSpot API payload
+    const hubspotData = {
+      fields: [
+        { name: "firstname", value: formData.name },
+        { name: "email", value: formData.email },
+        { name: "message", value: formData.message },
+      ],
+      context: {
+        pageUri: window.location.href,
+        pageName: document.title,
+      },
+    };
+
+    try {
+      const response = await fetch(
+        "https://api.hsforms.com/submissions/v3/integration/submit/48126853/84a8dbff-88fb-407e-a9c8-19ead1ee496b",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(hubspotData),
+        }
+      );
+
+      const result = await response.json();
+      console.log("HubSpot Response:", result);
+
+      if (response.ok) {
+        toast.success("Message sent successfully!");
+        setFormData({ name: "", email: "", message: "" });
+      } else {
+        toast.error("HubSpot submission failed.");
+      }
+    } catch (error) {
+      console.error("HubSpot Error:", error);
+      toast.error("Something went wrong. Try again later.");
+    }
+
+    setLoading(false);
   };
 
   return (
@@ -54,6 +92,7 @@ const Contact = () => {
 
         <div className="max-w-4xl mx-auto">
           <div className="grid md:grid-cols-2 gap-8">
+            {/* LEFT SIDE */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -63,7 +102,7 @@ const Contact = () => {
             >
               <div className="glass rounded-2xl p-6">
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
+                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
                     <Mail className="w-6 h-6 text-primary" />
                   </div>
                   <div>
@@ -75,7 +114,7 @@ const Contact = () => {
 
               <div className="glass rounded-2xl p-6">
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
+                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
                     <MessageSquare className="w-6 h-6 text-primary" />
                   </div>
                   <div>
@@ -110,6 +149,7 @@ const Contact = () => {
               </div>
             </motion.div>
 
+            {/* RIGHT SIDE — FORM */}
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -158,12 +198,13 @@ const Contact = () => {
                   />
                 </div>
 
-                <Button 
+                <Button
                   type="submit"
+                  disabled={loading}
                   className="w-full bg-gradient-primary text-primary-foreground border-0 hover:opacity-90"
                 >
-                  Send Message
-                  <Send className="ml-2 w-4 h-4" />
+                  {loading ? "Sending..." : "Send Message"}
+                  {!loading && <Send className="ml-2 w-4 h-4" />}
                 </Button>
               </form>
             </motion.div>
