@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Mail, MessageSquare, Send } from "lucide-react";
+import { Mail, MessageSquare, Send, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -12,6 +12,8 @@ const Contact = () => {
     email: "",
     message: ""
   });
+
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const [loading, setLoading] = useState(false);
 
@@ -61,6 +63,7 @@ const Contact = () => {
       if (response.ok) {
         toast.success("Message sent successfully!");
         setFormData({ name: "", email: "", message: "" });
+        setIsSubmitted(true);
       } else {
         toast.error("HubSpot submission failed.");
       }
@@ -156,57 +159,80 @@ const Contact = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <form onSubmit={handleSubmit} className="glass rounded-2xl p-6 space-y-4">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium mb-2">
-                    Your Name
-                  </label>
-                  <Input
-                    id="name"
-                    placeholder="John Doe"
-                    value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="bg-background/50 border-primary/20 focus:border-primary"
-                  />
-                </div>
+              <div className="glass rounded-2xl p-6 h-full">
+                {!isSubmitted ? (
+                  <form onSubmit={handleSubmit} className="space-y-4">
+                    <div>
+                      <label htmlFor="name" className="block text-sm font-medium mb-2">
+                        Your Name
+                      </label>
+                      <Input
+                        id="name"
+                        placeholder="John Doe"
+                        value={formData.name}
+                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                        className="bg-background/50 border-primary/20 focus:border-primary"
+                      />
+                    </div>
 
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium mb-2">
-                    Email Address
-                  </label>
-                  <Input
-                    id="email"
-                    type="email"
-                    placeholder="john@example.com"
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="bg-background/50 border-primary/20 focus:border-primary"
-                  />
-                </div>
+                    <div>
+                      <label htmlFor="email" className="block text-sm font-medium mb-2">
+                        Email Address
+                      </label>
+                      <Input
+                        id="email"
+                        type="email"
+                        placeholder="john@example.com"
+                        value={formData.email}
+                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                        className="bg-background/50 border-primary/20 focus:border-primary"
+                      />
+                    </div>
 
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium mb-2">
-                    Your Message
-                  </label>
-                  <Textarea
-                    id="message"
-                    placeholder="Tell me about your project..."
-                    rows={5}
-                    value={formData.message}
-                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    className="bg-background/50 border-primary/20 focus:border-primary resize-none"
-                  />
-                </div>
+                    <div>
+                      <label htmlFor="message" className="block text-sm font-medium mb-2">
+                        Your Message
+                      </label>
+                      <Textarea
+                        id="message"
+                        placeholder="Tell me about your project..."
+                        rows={5}
+                        value={formData.message}
+                        onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                        className="bg-background/50 border-primary/20 focus:border-primary resize-none"
+                      />
+                    </div>
 
-                <Button
-                  type="submit"
-                  disabled={loading}
-                  className="w-full bg-gradient-primary text-primary-foreground border-0 hover:opacity-90"
-                >
-                  {loading ? "Sending..." : "Send Message"}
-                  {!loading && <Send className="ml-2 w-4 h-4" />}
-                </Button>
-              </form>
+                    <Button
+                      type="submit"
+                      disabled={loading}
+                      className="w-full bg-gradient-primary text-primary-foreground border-0 hover:opacity-90"
+                    >
+                      {loading ? "Sending..." : "Send Message"}
+                      {!loading && <Send className="ml-2 w-4 h-4" />}
+                    </Button>
+                  </form>
+                ) : (
+                  <div className="flex flex-col items-center justify-center text-center h-full py-10 space-y-6">
+                    <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center">
+                      <Check className="w-10 h-10 text-primary" />
+                    </div>
+                    <div>
+                      <h3 className="text-2xl font-bold mb-2">Message Sent!</h3>
+                      <p className="text-muted-foreground">
+                        Thanks for reaching out! We'll get back to you shortly.
+                      </p>
+                    </div>
+                    <Button
+                      variant="outline"
+                      onClick={() => setIsSubmitted(false)}
+                      className="w-full border-primary/20 hover:bg-primary/5 hover:text-primary"
+                    >
+                      Send Another Message
+                    </Button>
+                  </div>
+                )}
+              </div>
             </motion.div>
           </div>
         </div>
